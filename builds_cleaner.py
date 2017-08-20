@@ -16,6 +16,6 @@ for dirname in os.listdir(path):
             "%a %b %d %H:%M:%S %Y"
         )
         if (expiration_limit - file_create_time).total_seconds() > 0:
-            print "Removing " % dirname
+            print "Removing %s" % dirname
             os.remove(os.path.join(path, dirname))
 
