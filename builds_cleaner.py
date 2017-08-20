@@ -1,4 +1,4 @@
-import argparse, os, time, datetime
+import argparse, os, time, datetime, shutil
 
 parser = argparse.ArgumentParser(description='Clean builds from gitlab CI.')
 parser.add_argument('--path', metavar='p', help='is a directory with builds')
@@ -17,5 +17,5 @@ for dirname in os.listdir(path):
         )
         if (expiration_limit - file_create_time).total_seconds() > 0:
             print "Removing %s" % dirname
-            os.remove(os.path.join(path, dirname))
+            shutil.rmtree(os.path.join(path, dirname))
 
